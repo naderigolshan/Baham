@@ -13,3 +13,5 @@ src/Baham.ViewModels/bin/
 src/Baham.ViewModels/obj/
 src/Baham.WebApi/obj/
 src/Baham.WebApi/bin/
+src/Baham.WebApi/appsettings.Development.json/
+src/Baham.WebApi/appsettings.json/
