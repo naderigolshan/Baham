@@ -1,0 +1,15 @@
+.vscode
+src/Baham.DataLayer/bin/
+src/Baham.DataLayer/obj/
+src/Baham.Common/obj/
+src/Baham.Common/bin/
+src/Baham.Entities/obj/
+src/Baham.Entities/bin/
+src/Baham.IoCConfig/bin/
+src/Baham.IoCConfig/obj/
+src/Baham.Services/obj/
+src/Baham.Services/bin/
+src/Baham.ViewModels/bin/
+src/Baham.ViewModels/obj/
+src/Baham.WebApi/obj/
+src/Baham.WebApi/bin/
