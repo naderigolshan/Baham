@@ -13,9 +13,12 @@ public static class AddCustomServicesExtension
         var provider = services.BuildServiceProvider();
         var connectionStrings = provider.GetRequiredService<IOptionsMonitor<ConnectionStrings>>().CurrentValue;
 
-        services.AddDbContext<BahamDbContext>(options => options.UseNpgsql(connectionStrings.BahamDbContextConnection));
+        services.AddDbContext<BahamDbContext>(options =>
+        {
+            options.UseNpgsql(connectionStrings.BahamDbContextConnection);
+        });
 
-        
+
         return services;
     }
 }

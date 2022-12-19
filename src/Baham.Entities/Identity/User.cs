@@ -13,12 +13,15 @@ public class User : IdentityUser<int>
     public bool IsActive { get; set; }
 
     [Required]
-    [MaxLength(10)]
+    [MaxLength(10)] 
     public string NationalCode { get; set; }
     public DateOnly BirthDay { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 
     // <Relations>
-    public virtual ICollection<UserClaim> UserClaims { get; set; }
+    // public virtual ICollection<UserClaim> UserClaims { get; set; }
+    // public virtual ICollection<UserLogin> UserLogins { get; set; }
+    // public virtual ICollection<UserRole> UserRoles { get; set; }
+    // public virtual ICollection<UserToken> UserTokens { get; set; }
 }

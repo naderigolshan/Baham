@@ -4,5 +4,5 @@ namespace Baham.Entities.Identity;
 
 public class RoleClaim : IdentityRoleClaim<int>
 {
-    public virtual Role Role { get; set; }
+    // public virtual Role Role { get; set; }
 }
