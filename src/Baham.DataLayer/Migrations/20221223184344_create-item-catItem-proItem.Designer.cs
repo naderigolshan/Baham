@@ -3,6 +3,7 @@ using System;
 using Baham.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Baham.DataLayer.Migrations
 {
     [DbContext(typeof(BahamDbContext))]
-    partial class BahamDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221223184344_create-item-catItem-proItem")]
+    partial class createitemcatItemproItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

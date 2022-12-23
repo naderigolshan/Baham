@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Baham.Entities;
 
 public class Store : BaseEntity
-{    
+{
     public string NameFa { get; set; }
     public string NameEn { get; set; }
     public string Code { get; set; }
@@ -14,11 +14,10 @@ public class Store : BaseEntity
     [ForeignKey("StoreCategory")]
     public int StoreCatId { get; set; }
 
-    
+
 
     /// <Relation>
     public User User { get; set; }
     public StoreCategory StoreCat { get; set; }
-
-
+    public virtual ICollection<Product> Products { get; set; }
 }

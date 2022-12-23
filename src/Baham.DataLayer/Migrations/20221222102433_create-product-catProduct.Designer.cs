@@ -3,6 +3,7 @@ using System;
 using Baham.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Baham.DataLayer.Migrations
 {
     [DbContext(typeof(BahamDbContext))]
-    partial class BahamDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221222102433_create-product-catProduct")]
+    partial class createproductcatProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,45 +128,6 @@ namespace Baham.DataLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Baham.Entities.Item", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Items");
-                });
-
-            modelBuilder.Entity("Baham.Entities.ItemCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ItemId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductCategoryId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ItemId");
-
-                    b.HasIndex("ProductCategoryId");
-
-                    b.ToTable("ItemCategories");
-                });
-
             modelBuilder.Entity("Baham.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -247,32 +211,6 @@ namespace Baham.DataLayer.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("ProductCategories");
-                });
-
-            modelBuilder.Entity("Baham.Entities.ProductItemValue", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ItemCategoryId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ItemCategoryId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductItemValues");
                 });
 
             modelBuilder.Entity("Baham.Entities.Role", b =>
@@ -496,25 +434,6 @@ namespace Baham.DataLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Baham.Entities.ItemCategory", b =>
-                {
-                    b.HasOne("Baham.Entities.Item", "Item")
-                        .WithMany()
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Baham.Entities.ProductCategory", "ProductCategory")
-                        .WithMany()
-                        .HasForeignKey("ProductCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Item");
-
-                    b.Navigation("ProductCategory");
-                });
-
             modelBuilder.Entity("Baham.Entities.Product", b =>
                 {
                     b.HasOne("Baham.Entities.ProductCategory", "Category")
@@ -541,25 +460,6 @@ namespace Baham.DataLayer.Migrations
                         .HasForeignKey("ParentId");
 
                     b.Navigation("Parent");
-                });
-
-            modelBuilder.Entity("Baham.Entities.ProductItemValue", b =>
-                {
-                    b.HasOne("Baham.Entities.ItemCategory", "ItemCategory")
-                        .WithMany()
-                        .HasForeignKey("ItemCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Baham.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ItemCategory");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Baham.Entities.Store", b =>
