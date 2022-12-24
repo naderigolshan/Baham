@@ -3,6 +3,7 @@ using System;
 using Baham.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Baham.DataLayer.Migrations
 {
     [DbContext(typeof(BahamDbContext))]
-    partial class BahamDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221224103035_create-userAddress")]
+    partial class createuserAddress
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -427,28 +430,6 @@ namespace Baham.DataLayer.Migrations
                     b.ToTable("StoreCategories");
                 });
 
-            modelBuilder.Entity("Baham.Entities.StorePhone", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(12)
-                        .HasColumnType("character varying(12)");
-
-                    b.Property<int>("StoreId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StoreId");
-
-                    b.ToTable("StorePhones");
-                });
-
             modelBuilder.Entity("Baham.Entities.Township", b =>
                 {
                     b.Property<int>("Id")
@@ -758,17 +739,6 @@ namespace Baham.DataLayer.Migrations
                     b.Navigation("Store");
 
                     b.Navigation("Township");
-                });
-
-            modelBuilder.Entity("Baham.Entities.StorePhone", b =>
-                {
-                    b.HasOne("Baham.Entities.Store", "Store")
-                        .WithMany()
-                        .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Store");
                 });
 
             modelBuilder.Entity("Baham.Entities.Township", b =>

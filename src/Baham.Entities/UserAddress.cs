@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using NetTopologySuite.Geometries;
 
 namespace Baham.Entities;
 
-public class UserAddress
+public class UserAddress : BaseEntity
 {
     public int UserId { get; set; }
 
@@ -15,4 +16,5 @@ public class UserAddress
     public string Plate { get; set; }
     public string Unit { get; set; }
     public string PostalCode { get; set; }
+    public Point Location { get; set; }
 }

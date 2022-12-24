@@ -33,4 +33,6 @@ public class BahamDbContext :
     public DbSet<Province> Provinces { get; set; }
     public DbSet<Township> Townships { get; set; }
     public DbSet<StoreAddress> StoreAddresses { get; set; }
+    public DbSet<UserAddress> UserAddresses { get; set; }
+    public DbSet<StorePhone> StorePhones { get; set; }
 }
