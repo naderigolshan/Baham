@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Baham.DataLayer.Context;
 using Baham.ViewModels.Application;
+using NetTopologySuite.Geometries;
 
 namespace Baham.IoCConfig;
 
@@ -15,7 +16,10 @@ public static class AddCustomServicesExtension
 
         services.AddDbContext<BahamDbContext>(options =>
         {
-            options.UseNpgsql(connectionStrings.BahamDbContextConnection);
+            options.UseNpgsql(
+                connectionStrings.BahamDbContextConnection,
+                x => x.UseNetTopologySuite()
+            );
         });
 
 

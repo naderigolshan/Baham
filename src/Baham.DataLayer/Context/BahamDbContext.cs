@@ -30,4 +30,7 @@ public class BahamDbContext :
     public DbSet<Item> Items { get; set; }
     public DbSet<ItemCategory> ItemCategories { get; set; }
     public DbSet<ProductItemValue> ProductItemValues { get; set; }
+    public DbSet<Province> Provinces { get; set; }
+    public DbSet<Township> Townships { get; set; }
+    public DbSet<StoreAddress> StoreAddresses { get; set; }
 }

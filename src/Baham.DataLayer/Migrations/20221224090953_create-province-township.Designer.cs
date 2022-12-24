@@ -3,8 +3,8 @@ using System;
 using Baham.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -12,16 +12,17 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Baham.DataLayer.Migrations
 {
     [DbContext(typeof(BahamDbContext))]
-    partial class BahamDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221224090953_create-province-township")]
+    partial class createprovincetownship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "postgis");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Baham.Entities.Identity.RoleClaim", b =>
@@ -376,9 +377,6 @@ namespace Baham.DataLayer.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Point>("Location")
-                        .HasColumnType("geometry");
-
                     b.Property<string>("Plate")
                         .HasColumnType("text");
 
@@ -405,7 +403,7 @@ namespace Baham.DataLayer.Migrations
 
                     b.HasIndex("storeId");
 
-                    b.ToTable("StoreAddresses");
+                    b.ToTable("StoreAddress");
                 });
 
             modelBuilder.Entity("Baham.Entities.StoreCategory", b =>
@@ -434,9 +432,6 @@ namespace Baham.DataLayer.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<Point>("Location")
-                        .HasColumnType("geometry");
 
                     b.Property<int>("ProvinceId")
                         .HasColumnType("integer");

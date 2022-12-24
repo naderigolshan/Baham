@@ -20,4 +20,5 @@ public class Store : BaseEntity
     public User User { get; set; }
     public StoreCategory StoreCat { get; set; }
     public virtual ICollection<Product> Products { get; set; }
+    public virtual ICollection<StoreAddress> StoreAddresses { get; set; }
 }
