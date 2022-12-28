@@ -11,7 +11,7 @@ builder.Services.Configure<ConnectionStrings>(
 );
 
 builder.Services.AddCustomeService();
-
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
